@@ -6,10 +6,6 @@ import Planes.Plane;
 
 import java.util.*;
 
-// version: 1.1
-// made by Vitali Shulha
-// 4-Jan-2019
-
 public class Airport {
     private List<? extends Plane> planes;
 
@@ -40,9 +36,9 @@ public class Airport {
     public PassengerPlane getPassengerPlaneWithMaxPassengersCapacity() {
         List<PassengerPlane> passengerPlanes = getPassengerPlanes();
         PassengerPlane planeWithMaxCapacity = passengerPlanes.get(0);
-        for (int i = 0; i < passengerPlanes.size(); i++) {
-            if (passengerPlanes.get(i).getPassengersCapacity() > planeWithMaxCapacity.getPassengersCapacity()) {
-                planeWithMaxCapacity = passengerPlanes.get(i);
+        for (PassengerPlane passengerPlane : passengerPlanes) {
+            if (passengerPlane.getPassengersCapacity() > planeWithMaxCapacity.getPassengersCapacity()) {
+                planeWithMaxCapacity = passengerPlane;
             }
         }
         return planeWithMaxCapacity;
@@ -51,9 +47,9 @@ public class Airport {
     public List<MilitaryPlane> getTransportMilitaryPlanes() {
         List<MilitaryPlane> transportMilitaryPlanes = new ArrayList<>();
         List<MilitaryPlane> militaryPlanes = getMilitaryPlanes();
-        for (int i = 0; i < militaryPlanes.size(); i++) {
-            if (militaryPlanes.get(i).getMilitaryType() == MilitaryType.TRANSPORT) {
-                transportMilitaryPlanes.add(militaryPlanes.get(i));
+        for (MilitaryPlane militaryPlane : militaryPlanes) {
+            if (militaryPlane.getMilitaryType() == MilitaryType.TRANSPORT) {
+                transportMilitaryPlanes.add(militaryPlane);
             }
         }
     return transportMilitaryPlanes;
@@ -62,9 +58,9 @@ public class Airport {
     public List<MilitaryPlane> getBomberMilitaryPlanes() {
         List<MilitaryPlane> bomberMilitaryPlanes = new ArrayList<>();
         List<MilitaryPlane> militaryPlanes = getMilitaryPlanes();
-        for (int i = 0; i < militaryPlanes.size(); i++) {
-            if (militaryPlanes.get(i).getMilitaryType() == MilitaryType.BOMBER) {
-                bomberMilitaryPlanes.add(militaryPlanes.get(i));
+        for (MilitaryPlane militaryPlane : militaryPlanes) {
+            if (militaryPlane.getMilitaryType() == MilitaryType.BOMBER) {
+                bomberMilitaryPlanes.add(militaryPlane);
             }
         }
         return bomberMilitaryPlanes;
@@ -81,44 +77,32 @@ public class Airport {
         return experimentalPlanes;
     }
 
-    public Airport sortByMaxDistance() {
+    public void sortByMaxDistance() {
         planes.sort(new Comparator<Plane>() {
-            public int compare(Plane o1, Plane o2) {
-                return o1.getMaxFlightDistance() - o2.getMaxFlightDistance();
+            public int compare(Plane plane1, Plane plane2) {
+                return plane1.getMaxFlightDistance() - plane2.getMaxFlightDistance();
             }
         });
-        return this;
     }
 
-    public Airport sortByMaxSpeed() {
+    public void sortByMaxSpeed() {
         planes.sort(new Comparator<Plane>() {
-            public int compare(Plane o1, Plane o2) {
-                return o1.getMaxSpeed() - o2.getMaxSpeed();
+            public int compare(Plane plane1, Plane plane2) {
+                return plane1.getMaxSpeed() - plane2.getMaxSpeed();
             }
         });
-        return this;
     }
 
-    public Airport sortByMaxLoadCapacity() {
+    public void sortByMaxLoadCapacity() {
         planes.sort(new Comparator<Plane>() {
-            public int compare(Plane o1, Plane o2) {
-                return o1.getMaxLoadCapacity() - o2.getMaxLoadCapacity();
+            public int compare(Plane plane1, Plane plane2) {
+                return plane1.getMaxLoadCapacity() - plane2.getMaxLoadCapacity();
             }
         });
-        return this;
     }
 
     public List<? extends Plane> getPlanes() {
         return planes;
-    }
-
-    //Don't use in project. Maybe mast deleted
-    private void print(Collection<? extends Plane> collection) {
-        Iterator<? extends Plane> iterator = collection.iterator();
-        while (iterator.hasNext()) {
-            Plane plane = iterator.next();
-            System.out.println(plane);
-        }
     }
 
     @Override

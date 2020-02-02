@@ -54,24 +54,10 @@ public class AirportTest {
         airport.sortByMaxLoadCapacity();
         List<? extends Plane> planesSortedByMaxLoadCapacity = airport.getPlanes();
 
-        // Not finally version
-
-        Assert.assertTrue(
-                (planesSortedByMaxLoadCapacity.get(0).getMaxLoadCapacity() <= planesSortedByMaxLoadCapacity.get(1).getMaxLoadCapacity()) &&
-                        (planesSortedByMaxLoadCapacity.get(1).getMaxLoadCapacity() <= planesSortedByMaxLoadCapacity.get(2).getMaxLoadCapacity()) &&
-                        (planesSortedByMaxLoadCapacity.get(2).getMaxLoadCapacity() <= planesSortedByMaxLoadCapacity.get(3).getMaxLoadCapacity()) &&
-                        (planesSortedByMaxLoadCapacity.get(3).getMaxLoadCapacity() <= planesSortedByMaxLoadCapacity.get(4).getMaxLoadCapacity()) &&
-                        (planesSortedByMaxLoadCapacity.get(4).getMaxLoadCapacity() <= planesSortedByMaxLoadCapacity.get(5).getMaxLoadCapacity()) &&
-                        (planesSortedByMaxLoadCapacity.get(5).getMaxLoadCapacity() <= planesSortedByMaxLoadCapacity.get(6).getMaxLoadCapacity()) &&
-                        (planesSortedByMaxLoadCapacity.get(6).getMaxLoadCapacity() <= planesSortedByMaxLoadCapacity.get(7).getMaxLoadCapacity()) &&
-                        (planesSortedByMaxLoadCapacity.get(7).getMaxLoadCapacity() <= planesSortedByMaxLoadCapacity.get(8).getMaxLoadCapacity()) &&
-                        (planesSortedByMaxLoadCapacity.get(8).getMaxLoadCapacity() <= planesSortedByMaxLoadCapacity.get(9).getMaxLoadCapacity()) &&
-                        (planesSortedByMaxLoadCapacity.get(9).getMaxLoadCapacity() <= planesSortedByMaxLoadCapacity.get(10).getMaxLoadCapacity()) &&
-                        (planesSortedByMaxLoadCapacity.get(10).getMaxLoadCapacity() <= planesSortedByMaxLoadCapacity.get(11).getMaxLoadCapacity()) &&
-                        (planesSortedByMaxLoadCapacity.get(11).getMaxLoadCapacity() <= planesSortedByMaxLoadCapacity.get(12).getMaxLoadCapacity()) &&
-                        (planesSortedByMaxLoadCapacity.get(12).getMaxLoadCapacity() <= planesSortedByMaxLoadCapacity.get(13).getMaxLoadCapacity()) &&
-                        (planesSortedByMaxLoadCapacity.get(13).getMaxLoadCapacity() <= planesSortedByMaxLoadCapacity.get(14).getMaxLoadCapacity()) &&
-                        (planesSortedByMaxLoadCapacity.get(14).getMaxLoadCapacity() <= planesSortedByMaxLoadCapacity.get(15).getMaxLoadCapacity()));
+        for (int i = 0; i < planesSortedByMaxLoadCapacity.size() - 1; i++) {
+            Assert.assertTrue(planesSortedByMaxLoadCapacity.get(i).getMaxLoadCapacity() >
+                    planesSortedByMaxLoadCapacity.get(i+1).getMaxLoadCapacity());
+        }
     }
 
     @Test

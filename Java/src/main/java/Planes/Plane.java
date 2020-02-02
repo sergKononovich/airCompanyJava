@@ -41,12 +41,11 @@ abstract public class Plane {
                 '}';
     }
 
-    //Must change Object o to some readable
     @Override
     public boolean equals(Object o) {
         Plane plane = (Plane) o;
         if (this == o) return true;
-        if (!(o instanceof Plane)) return false;
+        if (o == null) return false;
         return maxSpeed == plane.maxSpeed &&
                 maxFlightDistance == plane.maxFlightDistance &&
                 maxLoadCapacity == plane.maxLoadCapacity &&
